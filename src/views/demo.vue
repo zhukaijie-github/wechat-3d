@@ -121,7 +121,9 @@ const initLoader = () => {
       scene.add(model);
     },
     function (xhr) {
-      loadingPercent.value = xhr.loaded / xhr.total;
+      if (xhr.total) {
+        loadingPercent.value = xhr.loaded / xhr.total;
+      }
       if (loadingPercent.value >= 1) {
         nextTick(() => {
           setTimeout(() => {
